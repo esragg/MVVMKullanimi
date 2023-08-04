@@ -6,26 +6,17 @@ import androidx.lifecycle.ViewModel
 class SayfaViewModel : ViewModel() {
 
     var sonuc = MutableLiveData<String>()
+    var mrepo = MatematikRepository()
 
     init {
-        sonuc = MutableLiveData<String>("0")
+        sonuc = mrepo.matematikselSonucuGetir()
     }
 
     fun toplamaYap(alinanSayi1:String, alinanSayi2: String) {
-        val sayi1  = alinanSayi1.toInt()
-        val sayi2  = alinanSayi2.toInt()
-
-        val toplam = sayi1 + sayi2
-
-        sonuc.value = toplam.toString()
+        mrepo.topla(alinanSayi1,alinanSayi2)
 
     }
     fun carpmaYap(alinanSayi1:String, alinanSayi2: String) {
-        val sayi1  = alinanSayi1.toInt()
-        val sayi2  = alinanSayi2.toInt()
-
-        val carpma = sayi1 * sayi2
-
-        sonuc.value = carpma.toString()
+        mrepo.carpma(alinanSayi1,alinanSayi2)
     }
 }
